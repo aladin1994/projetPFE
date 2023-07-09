@@ -89,6 +89,20 @@ button{
     background: #ff9f43 !important;
 }
 
+.slide-container{
+    margin-top: 2%;
+    max-width: 1120px;
+    width: 100%;
+    background-color: gray;
+    padding: 40px 0;
+}
+.slide-content{
+    margin: 0 40px;
+}
+
+
+
+
 @media (max-width: 1000px) {
     .content{
         width: 45%;

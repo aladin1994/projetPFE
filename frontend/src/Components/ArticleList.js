@@ -7,13 +7,50 @@ import './ArticleListStyle.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import AddArticle from './AddArticle'
+import 'react-multi-carousel/lib/styles.css';
+import Slider from "react-slick";
 const ArticleList = () => {
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
+
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
   const articles = useSelector(state => state.ArticleReducer.articles)
   useEffect(() => {
     setTimeout(() => {
-      dispatch(Get_article(), setLoading(false), setTotalArticle(articles.length))
+      dispatch(Get_article(), setLoading(false))
 
     }, 1000);
 
@@ -22,30 +59,28 @@ const ArticleList = () => {
 
   console.log(articles)
   const [search, setSearch] = useState('')
-  const [totalArticle, setTotalArticle] = useState("Loading...")
+  const [totalArticle] = useState("Loading...")
   return (
     <div className='interface'>
       <div className="navigation">
-        
+
         <p>Total: {totalArticle}</p>
         <AddArticle />
         <Form className="d-flex">
-        <Form.Control
-          type="search"
-          placeholder="Search"
-          className="me-2"
-          aria-label="Search"
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <Button variant="outline-success">Search</Button>
-      </Form>
-        
-        </div>
-      
+          <Form.Control
+            type="search"
+            placeholder="Search"
+            className="me-2"
+            aria-label="Search"
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <Button variant="outline-success">Search</Button>
+        </Form>
 
-      
-      <div style={{ display: 'flex', justifyContent: "center", alignItems: "center", margin: "5%", gap: "10px", flexWrap: "wrap" }}>
-
+      </div>
+      <div>
+        <h2> Responsive </h2>
+        <Slider {...settings}>
         {
           loading ? <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
@@ -53,7 +88,16 @@ const ArticleList = () => {
           </Spinner> : articles?.filter((el) => el.name.toUpperCase().includes(search.toUpperCase()))?.map((el) => <ArticlesCard key={el._id} el={el} />)
 
         }
+        </Slider>
       </div>
+
+
+
+
+
+
+
+
     </div>
   )
 }
