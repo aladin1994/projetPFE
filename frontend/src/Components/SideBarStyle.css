@@ -1,25 +1,25 @@
 *{
   margin: 0;
 }
-  .container1{
-    display: flex ;
-    width: 100vw;
-      
-  }
+ 
   main{
     padding: 20px;
     margin-left: 25%;
-    width: 100vw;
+    background: rgb(206, 199, 199);
+    position: relative;
+    
   }
   .sidebar{
-    background-color: black;
-    position: absolute;
+    background-color: #736667;
+    position: fixed;
+    top: 0;
+    left: 0;
     top: 100px;
-    bottom: 100px;
     color: white;
-    height: 100vh;
+    height: 100%;
     width: 300px;
     transition: all 0.5s;
+
   }
   .top_section{
     display: flex;

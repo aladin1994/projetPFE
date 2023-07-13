@@ -50,7 +50,7 @@ const ArticleList = () => {
   const articles = useSelector(state => state.ArticleReducer.articles)
   useEffect(() => {
     setTimeout(() => {
-      dispatch(Get_article(), setLoading(false))
+      dispatch(Get_article(), setLoading(false),setTotalArticle(articles.length))
 
     }, 1000);
 
@@ -59,12 +59,12 @@ const ArticleList = () => {
 
   console.log(articles)
   const [search, setSearch] = useState('')
-  const [totalArticle] = useState("Loading...")
+  const [totalArticle,setTotalArticle] = useState("Loading...")
   return (
     <div className='interface'>
       <div className="navigation">
 
-        <p>Total: {totalArticle}</p>
+        <p>Total articles: {totalArticle}</p>
         <AddArticle />
         <Form className="d-flex">
           <Form.Control
@@ -78,9 +78,10 @@ const ArticleList = () => {
         </Form>
 
       </div>
-      <div>
-        <h2> Responsive </h2>
+      
+       
         <Slider {...settings}>
+        
         {
           loading ? <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
@@ -88,8 +89,9 @@ const ArticleList = () => {
           </Spinner> : articles?.filter((el) => el.name.toUpperCase().includes(search.toUpperCase()))?.map((el) => <ArticlesCard key={el._id} el={el} />)
 
         }
+        
         </Slider>
-      </div>
+      
 
 
 

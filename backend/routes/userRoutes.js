@@ -1,17 +1,15 @@
-const express=require("express")
-const {Getuser, Deleteuser, Edituser, Getone, Register, Login } = require("../controlles/userControlles")
-const { registervalidation, validation, loginvalidation } = require("../middleware/validator")
-const { isAuth } = require("../middleware/isAuth")
-const userRoutes=express.Router()
+const express = require('express');
+const verifyRoles = require('../middleware/VerifyRoles');
+const ROLES_LIST = require('../config/roles_list');
+const router = express.Router();
+const usersController = require('../controlles/userController')
 
+router.route('/')
+    .get(usersController.getAllUsers)
+    //.get(verifyRoles(ROLES_LIST.Admin), usersController.getAllUsers)
+    .delete(verifyRoles(ROLES_LIST.Admin), usersController.deleteUser);
 
-userRoutes.post("/register",registervalidation,validation,Register)
-userRoutes.post("/login",loginvalidation,validation,Login)
-userRoutes.get("/current",isAuth,(req,res)=>{
-    res.send({ user: req.user })
-})
-userRoutes.get("/",Getuser)
-userRoutes.delete("/:id",Deleteuser)
-userRoutes.put("/edit/:id",Edituser)
-userRoutes.post("/filter",Getone)
-module.exports=userRoutes
+router.route('/:id')
+    .get(verifyRoles(ROLES_LIST.Admin), usersController.getUser);
+
+module.exports = router;

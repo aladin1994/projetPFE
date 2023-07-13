@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
 const Sidebar = ({children}) => {
-    const [isOpen , setIsOpen] =useState(false);
+    const [isOpen , setIsOpen] =useState(true   );
     const toggle = ()=> setIsOpen(!isOpen);
     const menuItem=[
         {
@@ -49,7 +49,7 @@ const Sidebar = ({children}) => {
     ]
   return (
 
-    <div className="container1">
+    <div>
       <div style={{width: isOpen? "300px" : "50px"}} className="sidebar">
       <div className="top_section">
         <h1 style={{display: isOpen? "block" : "none"}} className="logo">Go Stock</h1>
@@ -68,7 +68,7 @@ const Sidebar = ({children}) => {
         }
       </div>
       <main>{children}</main>
-    </div>
+      </div>
   )
 }
 
