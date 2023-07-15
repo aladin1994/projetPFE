@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Get_Facture } from '../redux/Action/FactureAction';
 import Spinner from 'react-bootstrap/Spinner';
 import FactureCard from './FactureCard'
+import AddFacture from './AddFacture';
 const FactureList = () => {
     const [search, setSearch] = useState('')
     const [loading, setLoading] = useState(true)
@@ -24,7 +25,7 @@ const FactureList = () => {
       <div className="menu-facture">
         <p>List des factures </p>
         <div className='right-menu'>
-        <button className='btn-facture'>Add facture</button>
+        <AddFacture />
         <Form  className="d-flex">
           <Form.Control
             type="search"

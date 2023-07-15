@@ -1,4 +1,4 @@
-import {  FaMoneyBillAlt, FaMoneyCheckAlt, FaShopify, FaUserCog } from 'react-icons/fa';
+import {  FaMoneyBillAlt, FaMoneyCheckAlt, FaShopify, FaUserCog, FaWhmcs } from 'react-icons/fa';
 import './SideBarStyle.css'
 import React , { useState } from "react"
 import {
@@ -45,6 +45,11 @@ const Sidebar = ({children}) => {
             path:"/stock",
             name:"Stock",
             icon:<FaTh/>
+        },
+        {
+            path:"/settings",
+            name:"Settings",
+            icon:<FaWhmcs/>
         },
     ]
   return (

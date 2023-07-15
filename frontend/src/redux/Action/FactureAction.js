@@ -12,3 +12,27 @@ export const Get_Facture = () => async (dispatch) => {
         console.log(error)
     }
 }
+export const Edit_facture=(id,data)=>async(dispatch)=>{
+    try {
+        await axios.put("/facture/update/"+id,data)
+        dispatch(Get_Facture())
+    } catch (error) {
+        console.log(error) 
+    }
+}
+export const Delete_facture=(id)=>async(dispatch)=>{
+    try {
+        await axios.delete(`/facture/delete/${id}`)
+        dispatch(Get_Facture())
+    } catch (error) {
+        console.log(error) 
+    }
+}
+export const Add_facture=(data)=>async(dispatch)=>{
+    try {
+        await axios.post('/facture/post',data)
+        dispatch(Get_Facture())
+    } catch (error) {
+        console.log(error)
+    }
+}

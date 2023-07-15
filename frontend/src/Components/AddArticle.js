@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -6,6 +6,23 @@ import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
 import { Add_article } from '../redux/Action/ArticleAction';
 const AddArticle = () => {
+  const options = [
+    { value: 'Automotive and Transport', label: 'Automotive and Transport' },
+    { value: 'Business and Finance', label: 'Business and Finance' },
+    { value: 'Energy and Natural Resources', label: 'Energy and Natural Resources' },
+    { value: 'Food and Beverage', label: 'Food and Beverage' },
+    { value: 'Telecommunications and Computing', label: 'Telecommunications and Computing' },
+    { value: 'Pharmaceuticals', label: 'Pharmaceuticals' },
+    { value: 'Humanities Books', label: 'Humanities Books' },
+    { value: 'Industry', label: 'Industry' },
+    { value: 'Meuble', label: 'Meuble' },
+
+];
+    const [values , setValues]= useState([]) 
+    
+    useEffect(() => {
+      setValues(options)
+    }, [])
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -39,7 +56,11 @@ const AddArticle = () => {
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmai">
         <Form.Label>subject</Form.Label>
-        <Form.Control type="text" placeholder="Enter subject" onChange={(e)=>setSubject(e.target.value)} />
+        <Form.Select  onChange={(e)=>setSubject(e.target.value)}>
+        {
+          values.map((opt , i)=><option>{opt.value}</option>)
+        }
+      </Form.Select>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmai">
         <Form.Label>¨Price</Form.Label>

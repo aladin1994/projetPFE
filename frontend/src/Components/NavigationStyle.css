@@ -4,10 +4,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     box-sizing: border-box;
-    background-color: black;
-    margin-bottom: 2%;
+    background-color: #736667;
+  
+    padding: 2%;
+    margin-left: 22%;
+    
 }
 .navbar a{
     color: white;

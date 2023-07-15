@@ -57,7 +57,6 @@ const ArticleList = () => {
 
   }, [dispatch])
 
-  console.log(articles)
   const [search, setSearch] = useState('')
   const [totalArticle,setTotalArticle] = useState("Loading...")
   return (

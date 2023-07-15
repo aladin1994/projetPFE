@@ -25,13 +25,15 @@ const ArticlesCard = ({ el }) => {
           <h3>{el?.name}</h3>
           <h6>{el?.price}</h6>
           <p>{el?.subject}</p>
-          
+
 
 
           <Button className='btn_edite' onClick={handleShow}>
             Edit
           </Button>
-          <Button className='btn_delete' onClick={() => dispatch(Delete_article(el._id), window.location.reload())}>Delete</Button>
+          <Button className='btn_delete' onClick={() => dispatch(Delete_article(el._id), window.location.reload())}>
+            Delete
+          </Button>
 
         </div>
       </div>

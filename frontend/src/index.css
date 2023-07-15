@@ -12,7 +12,6 @@ code {
     monospace;
 }
 body{
-  border: 1px solid black;
   width: 100% !important;
   position: relative;
   display: flex;
