@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form';
 import AddArticle from './AddArticle'
 import 'react-multi-carousel/lib/styles.css';
 import Slider from "react-slick";
-const ArticleList = () => {
+const ArticleList = ({articles}) => {
   const settings = {
     dots: true,
     infinite: false,
@@ -47,7 +47,6 @@ const ArticleList = () => {
 
   const [loading, setLoading] = useState(true)
   const dispatch = useDispatch()
-  const articles = useSelector(state => state.ArticleReducer.articles)
   useEffect(() => {
     setTimeout(() => {
       dispatch(Get_article(), setLoading(false),setTotalArticle(articles.length))

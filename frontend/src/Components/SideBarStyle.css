@@ -61,4 +61,15 @@
   body{
     font-family: 'Poppins';
   }
-  
+  @media screen and (max-width: 750px) {
+    .sidebar{
+      width: 50px !important;
+      }
+      .top_section{
+        display: none;
+      }
+      .link_text{
+        display: none;
+      }
+   
+  }

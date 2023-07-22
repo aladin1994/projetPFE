@@ -14,6 +14,7 @@ export const Get_Facture = () => async (dispatch) => {
 }
 export const Edit_facture=(id,data)=>async(dispatch)=>{
     try {
+        data.date = Date.now()
         await axios.put("/facture/update/"+id,data)
         dispatch(Get_Facture())
     } catch (error) {
@@ -30,7 +31,9 @@ export const Delete_facture=(id)=>async(dispatch)=>{
 }
 export const Add_facture=(data)=>async(dispatch)=>{
     try {
+        data.date = Date.now()
         await axios.post('/facture/post',data)
+
         dispatch(Get_Facture())
     } catch (error) {
         console.log(error)

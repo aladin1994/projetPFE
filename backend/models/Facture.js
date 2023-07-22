@@ -6,7 +6,8 @@ const FactureSchema=new mongoose.Schema({
     montant:Number,
     percu:Number,
     rendu: Number,
-    etat : String
+    etat : String,
+    date: Date
 
 })
 module.exports=mongoose.model("Facture",FactureSchema)

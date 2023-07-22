@@ -7,18 +7,14 @@ import { Get_Facture } from '../redux/Action/FactureAction';
 import Spinner from 'react-bootstrap/Spinner';
 import FactureCard from './FactureCard'
 import AddFacture from './AddFacture';
-const FactureList = () => {
+const FactureList = ({factures}) => {
     const [search, setSearch] = useState('')
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
-    const factures = useSelector(state => state.FactureReducer.factures)
     useEffect(() => {
       setTimeout(() => {
-        dispatch(Get_Facture(), setLoading(false))
-  
+        dispatch(Get_Facture(),setLoading(false))
       }, 1000);
-  
-  
     }, [dispatch])
   return (
     <div>
@@ -49,6 +45,7 @@ const FactureList = () => {
                         <td>Perçu</td>
                         <td>Rendu</td>
                         <td>Etat</td>
+                        <td>Date</td>
                         <td></td>
                         
                         </tr>

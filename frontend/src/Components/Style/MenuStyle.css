@@ -1,0 +1,41 @@
+.menuSide{
+    .itemSide{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+        .titleSide{
+            font-size: 12px;
+            font-weight: 200;
+            color: #a5abb6;
+            text-transform: uppercase;
+        }
+        .listItme{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border-radius: 5%;
+            text-decoration: none;
+
+            &:hover{
+                background-color: #384256;
+            }
+            .listItemTitle{
+                width: 50%;
+                color: #a5abb6;
+            }
+        }
+    }
+}
+img{
+    width: 26px;
+    height: 26px;
+    object-fit: cover;
+
+}
+.settingsLogo{
+    width: 26px;
+    height: 26px;
+    object-fit: cover;
+}
